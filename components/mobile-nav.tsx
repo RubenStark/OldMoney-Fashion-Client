@@ -18,7 +18,6 @@ const MobileNav: React.FC<MobileNavProps> = ({ data }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
 
   const routes = data.map((route) => ({

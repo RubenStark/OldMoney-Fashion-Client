@@ -11,6 +11,7 @@ import getColors from '@/actions/get-colors';
 
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
+import { Genre } from '@/types';
 
 export const revalidate = 0;
 
@@ -21,6 +22,7 @@ interface CategoryPageProps {
   searchParams: {
     colorId: string;
     sizeId: string;
+    isMan: boolean;
   }
 }
 
@@ -38,14 +40,16 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
 
-  const genres = [
+  const genres: Genre[] = [
     {
       id: 'true',
-      name: 'Masculino'
+      name: 'Masculino',
+      value: 'true'
     },
     {
       id: 'false',
-      name: 'Femenino'
+      name: 'Femenino',
+      value: 'false'
     }
   ];
 
