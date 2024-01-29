@@ -2,12 +2,11 @@ import { create } from 'zustand';
 import { toast } from 'react-hot-toast';
 import { persist, createJSONStorage } from "zustand/middleware"; 
 
-import { Product } from '@/types';
-import { AlertTriangle } from 'lucide-react';
+import { ProductCart } from '@/types';
 
 interface CartStore {
-  items: Product[];
-  addItem: (data: Product) => void;
+  items: ProductCart[];
+  addItem: (data: ProductCart) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
@@ -15,9 +14,11 @@ interface CartStore {
 const useCart = create(
   persist<CartStore>((set, get) => ({
   items: [],
-  addItem: (data: Product) => {
+  addItem: (data: ProductCart) => {
     const currentItems = get().items;
     const existingItem = currentItems.find((item) => item.id === data.id);
+
+    console.log(currentItems);
     
     if (existingItem) {
       return toast('Item already in cart.');

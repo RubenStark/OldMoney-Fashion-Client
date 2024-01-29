@@ -19,7 +19,7 @@ const Summary = () => {
   const {user} = useUser();
   const router = useRouter();
 
-  // console.log(user?.id);
+  console.log(user?.id);
 
   useEffect(() => {
     if (searchParams.get("success")) {
@@ -42,14 +42,11 @@ const Summary = () => {
       {
         productIds: items.map((item) => item.id),
         ownerId: user?.id,
-        sizes: items.map((item) => item.size),
       }
     );
 
     window.location = response.data.url;
-
   };
-
 
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
