@@ -1,0 +1,12 @@
+cambiar
+
+stripe Dashboard > Developers > WebHooks > Add Endpoint 
+
+url/api/webhook
+
+select event > checkout.session.completed
+
+copy signin secret = STRIPE_WEBHOOK_SECRET
+
+
+Stripe > Dashboard > copy secret key 

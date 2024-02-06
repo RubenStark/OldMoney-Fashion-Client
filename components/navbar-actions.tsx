@@ -24,6 +24,7 @@ const NavbarActions = () => {
     return null;
   }
 
+
   function onOrders () {
     user.isSignedIn ? router.push('/orders') : router.push('/sign-in')
   }

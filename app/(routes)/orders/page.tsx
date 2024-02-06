@@ -6,23 +6,22 @@ import Container from "@/components/ui/container";
 import Image from "next/image";
 import getOrders from "@/actions/get-orders-by-user";
 import { Order, OrderItem } from "@/types";
+import { RedirectToSignIn } from "@clerk/nextjs";
 export const revalidate = 0;
+import { useUser } from "@clerk/clerk-react";
 
 const OrdersPage = async () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const user = useUser();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
+  if (!user) {
+    return <RedirectToSignIn />;
   }
 
   const orders: Order[] = await getOrders();
 
   return (
     <div className="bg-white">
+      {/* <RedirectToSignIn /> */}
       <Container>
         <div className="px-4 py-16 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-black">Ordenes</h1>
